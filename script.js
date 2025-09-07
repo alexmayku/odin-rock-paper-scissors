@@ -50,24 +50,3 @@
         rules(computerGuess,humanGuess);
         }
 
-    function game(){
-    for (let i = 0; i < 5; i++) {
-        round(); 
-        }
-        function winner(){
-            if(humanScore===computerScore){
-                return "It's a draw!";
-            }
-            else if(computerScore > humanScore){
-                return "Computer wins!!";
-            }
-            else {
-                return "Human Wins!!";
-            }
-        }
-        console.log(`The scores are:
-            human: ${humanScore}
-            computer: ${computerScore}
-            
-            ${winner()}`)
-    }
