@@ -4,6 +4,8 @@
     let options = ["rock", "paper", "scissors"];
     let humanScore = 0;
     let computerScore = 0;
+    let results = document.querySelector('.results');
+    let score = document.querySelector('.running-score');
 
     function rules(a,b){
         a = a.toLowerCase();
@@ -13,15 +15,39 @@
             round();
         }
         else if(a===b){
-            console.log("It's a draw!");
+            let outcome = document.createElement("p");
+            outcome.textContent= "It's a draw!";
+            results.appendChild(outcome);
+            console.log(score);
+            score.textContent = `"Human:" ${humanScore} "Computer:" ${computerScore}`;
         }
         else if ((a==="rock" && b==="scissors") || (a==="paper" && b==="rock") || (a==="scissors" && b==="paper") ) {
-            console.log("The computer is the winner");
+            let outcome = document.createElement("p");
+            outcome.textContent= "Computer Wins!";
+            results.appendChild(outcome);
             computerScore++;
+            if(computerScore === 5){
+                score.textContent = `"Human:" ${humanScore} "Computer:" ${computerScore} "Computer Wins!"`;
+            }
+            else{
+            console.log(score);
+            score.textContent = `"Human:" ${humanScore} "Computer:" ${computerScore}`;
+            }
+
         }
         else {
-            console.log("The human wins");
+            let outcome = document.createElement("p");
+            outcome.textContent= "Human Wins!";
+            results.appendChild(outcome);
             humanScore++;
+            if(humanScore === 5){
+            score.textContent = `"Human:" ${humanScore} "Computer:" ${computerScore} "Computer Wins!"`;
+            }
+            else{
+            console.log(score);
+            score.textContent = `"Human:" ${humanScore} "Computer:" ${computerScore}`;
+            }
+        
         }
     }
   
