@@ -7,7 +7,7 @@
 
     function rules(a,b){
         a = a.toLowerCase();
-        b = b.toLowerCase(  );
+        b = b.toLowerCase();
         if(!(options.includes(b))){
             alert("Not a valid input");
             round();
@@ -24,16 +24,29 @@
             humanScore++;
         }
     }
+  
+    const rockButton = document.querySelector(".rock");
+    rockButton.addEventListener("click", () => setChoiceAndStartRound("rock"));
+    
+    const scissorsButton = document.querySelector(".scissors");
+    scissorsButton.addEventListener("click", () => setChoiceAndStartRound("scissors"));
+    
+    const paperButton = document.querySelector(".paper");
+    paperButton.addEventListener("click", () => setChoiceAndStartRound("paper"));
 
-    function round(){
-        let humanGuess;
+    function setChoiceAndStartRound(buttonId){
+        round(buttonId);
+    }
+
+    function round(choice){
+        let humanGuess=choice;
         let computerGuess;
-        humanGuess = prompt("rock, paper or scissors?");
         function computerSelectionNumber(){
             let selectionNumber = Math.floor(Math.random()*3);
             return selectionNumber;
         }
         computerGuess= options[computerSelectionNumber()];
+        console.log(`"the human chose: " ${humanGuess} " and the computer chose: " ${computerGuess}` );
         rules(computerGuess,humanGuess);
         }
 
@@ -58,4 +71,3 @@
             
             ${winner()}`)
     }
-    game();
